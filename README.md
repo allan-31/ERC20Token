@@ -1,66 +1,106 @@
-## Foundry
+# OurToken (OT)
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A simple ERC20 token built with [OpenZeppelin Contracts](https://github.com/OpenZeppelin/openzeppelin-contracts) and deployed using [Foundry](https://book.getfoundry.sh/).
 
-Foundry consists of:
+## Overview
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+**OurToken (OT)** is a demonstration project showcasing the basic implementation of an ERC20 token. It uses OpenZeppelin’s battle-tested library and leverages Foundry for development, scripting, and testing.
 
-## Documentation
+* Built with Solidity `^0.8.2`
+* Powered by OpenZeppelin ERC20
+* Tested and deployed with Foundry
 
-https://book.getfoundry.sh/
+## Quick Start
 
-## Usage
+### 1. Install Dependencies
 
-### Build
-
-```shell
-$ forge build
+```bash
+make install
 ```
 
-### Test
+### 2. Remove Installed Modules (if needed)
 
-```shell
-$ forge test
+```bash
+make remove
 ```
 
-### Format
+### 3. Compile Contracts
 
-```shell
-$ forge fmt
+```bash
+forge build
 ```
 
-### Gas Snapshots
+### 4. Deploy Contracts
 
-```shell
-$ forge snapshot
+#### Local (Anvil)
+
+Start Anvil locally:
+
+```bash
+anvil
 ```
 
-### Anvil
+Then deploy:
 
-```shell
-$ anvil
+```bash
+make deploy-anvil
 ```
 
-### Deploy
+#### Sepolia Testnet
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+Ensure your `.env` file contains:
+
+```env
+SEPOLIA_URL
 ```
 
-### Cast
+Also make sure you've set up a Foundry account alias named `myaccount2`.
 
-```shell
-$ cast <subcommand>
+Then deploy:
+
+```bash
+make deploy-sepolia
 ```
 
-### Help
+### 5. Run Tests
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+```bash
+forge test
 ```
+
+### 6. Take a Snapshot (Gas Report)
+
+```bash
+make snapshot
+```
+
+### 7. Run Coverage Report
+
+```bash
+make coverage
+```
+
+## Contract Details
+
+* **Name**: Our Token
+* **Symbol**: OT
+* **Decimals**: 18 (default)
+* **Initial Supply**: Passed as constructor argument and minted to the deployer (`msg.sender`)
+
+## 🧪 Testing
+
+To write or run tests, add test files in the `test/` directory using Foundry's test framework.
+
+Run tests:
+
+```bash
+forge test
+```
+
+## 👤 Author
+
+**Arinaitwe Allan**
+Solidity Developer
+ermlabs.d@gmail.com
+📅 Building since 2023
+
